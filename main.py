@@ -12,7 +12,7 @@ data = clean_orders(file)
 parsed_data = parse_orders(parse_order, data)
 
 # creating a spark session
-spark = (SparkSession.builder.appName("TestProject").getOrCreate())
+spark = (SparkSession.builder.appName("BethesdaProject").getOrCreate())
 
 # creating a schema for building orders data frame
 schema = StructType([
@@ -35,11 +35,20 @@ orders_df = spark.createDataFrame(data=parsed_data, schema=schema)
 (orders_df.groupBy("first_name", "last_name", "account_id")
           .agg(sum("price_paid").alias("sum_paid")).orderBy("sum_paid", ascending=False)).show(1)
 
+# User that spent the most - account_id = 143, Marissa Jefferson.
+
 # 2. What was the most expensive item that was purchased by the user who spent the most?
-orders_df.select("first_name", "last_name", "item_id", "base_cost")\
+orders_df.select("first_name", "last_name", "account_id", "item_id", "base_cost")\
          .where(col("account_id") == 143)\
          .orderBy("base_cost", ascending=False).show(1)
 
+# The most expensive item that user 143 purchased was: item_id = 2746, cost = 99.99.
+
 # 3. How much did Marissa Washington Spend?
-orders_df.where((col("first_name") == "Marissa") & (col("last_name") == "Washington"))\
-         .orderBy("price_paid", ascending=False).show()
+(orders_df.select("first_name", "last_name", "account_id", "price_paid")
+          .where((col("first_name") == "Marissa") & (col("last_name") == "Washington")))\
+          .groupBy("first_name", "last_name", "account_id")\
+          .agg(sum("price_paid").alias("sum_paid")).show()
+
+# Marissa Washington account_id = 145 , spent 26.969.
+# Marissa Washington account_id = 125, spent 18.449.
