@@ -1,25 +1,25 @@
 
 Description:
-Assessment project for ZeniMax
+Assessment project for Bethesda ZeniMax
 
 Sample data to work with:
 * The item_data.json file provides the mapping information from the items purchased to item information.
 * The orders.txt file contains the user, item, and price information.
 
 Please answer the following questions based on the attached data:
-•          Which user spent the most?
-•          What was the most expensive item that was purchased by the user who spent the most?
-•          How much did Marissa Washington Spend?
+    • Which user spent the most?
+    • What was the most expensive item that was purchased by the user who spent the most?
+    • How much did Marissa Washington Spend?
 ---------------------------------------------------
 My Approach:
 After the phone interview and in order to meet position requirements,
 I decided to study the basics of Apache Spark.
 
 For this project I wanted to use python, pyspark and pandas.
-Please make sure that all of these are installed and configures.
+Please make sure that all of these are installed and configured.
 ---------------------------------------------------
 
-To execute a program, run main.py and the answers will be printed out.
+To execute the program, run main.py and the answers will be printed out.
 
 ---------------------------------------------------
 Data processing steps:
@@ -53,7 +53,7 @@ Steps I took in order to answer the given questions:
     * Executed the first() action on this data and fetched the needed value for the answer
 
 The answer is:
-User that spent the most: Marissa Jefferson, account_id: 143, total: 105.09$.
+The user that spent the most: Marissa Jefferson, account_id: 143, total: 105.09$.
 
 2. What was the most expensive item that was purchased by the user who spent the most?
     * Selected the relevant fields
