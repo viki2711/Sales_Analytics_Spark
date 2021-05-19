@@ -1,6 +1,6 @@
 
 Description:
-Assessment project for Bethesda ZeniMax
+Assessment project for ZeniMax
 
 Sample data to work with:
 * The item_data.json file provides the mapping information from the items purchased to item information.
