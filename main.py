@@ -39,9 +39,9 @@ user_id = user["account_id"]
 user_name = user["first_name"] + " " + user["last_name"]
 max_value = round(user["sum_paid"], 2)
 
-print(f'1. User who spent the most is: {user_name}, account_id: {user_id}, value: {max_value}$')
+print(f'1. User who spent the most is: {user_name}, account_id: {user_id}, total: {max_value}$')
 
-# User that spent the most: Marissa Jefferson, account_id = 143, 105.09$.
+# User that spent the most: Marissa Jefferson, account_id: 143, total: 105.09$.
 
 ####--------------------------------------------------------------------------####
 
@@ -55,11 +55,12 @@ item_id = item["item_id"]
 # fetching the correct info from pandas dataframe
 item_info = df_items[str(item_id)]
 
-print(f'2. The most expensive item that user {user_id} purchased was: '
-      f'item_id: {item_id}, cost: {item["base_cost"]}$, '
-      f'item info - quality: {item_info["quality"]}, price: {item_info["price"]}$, name: {item_info["itemName"]}')
+print(f'2. The most expensive item that {item["first_name"]} {item["last_name"]} '
+      f'purchased was: {item_info["itemName"]}, '
+      f'full item info - item_id: {item_id}, quality: {item_info["quality"]}, price: {item_info["price"]}$')
 
-# The most expensive item that user 143 purchased was: item_id = 2746, cost = 99.99$.
+# The most expensive item that Marissa Jefferson purchased was: frozen short bow,
+# full item info - item_id: 2746, quality: 1, price = 99.99$.
 
 ####--------------------------------------------------------------------------####
 
@@ -73,13 +74,13 @@ selected_users = selected_users_df.collect()
 
 # formatting function
 def print_users(selected_users):
-    output = f'3. '
+    output = f'3. 2 mathcing accounts were found:\n'
     for user in selected_users:
         user_name = user["first_name"] + " " + user["last_name"]
         sum_paid = round(user["sum_paid"], 2)
-        output += f'{user_name}, account_id: {user["account_id"]}, spent: {sum_paid}$ | '
+        output += f'   {user_name}, account_id: {user["account_id"]}, total: {sum_paid}$\n'
     print(output)
 
 print_users(selected_users)
-# Marissa Washington account_id = 145 , spent 26.97$.
-# Marissa Washington account_id = 125, spent 18.45$.
+# Marissa Washington, account_id: 145 , total: 26.97$.
+# Marissa Washington, account_id: 125, total: 18.45$.
