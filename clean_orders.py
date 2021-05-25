@@ -1,7 +1,7 @@
 # function that cleans the text file
-# Stripping each line of curly brackets, new line and comma at the end of the line
+# Stripping each line of curly braces, new line and comma at the end of the line
 # Splitting by comma to the smaller elements
-# Splitting each element by semi-colon and taking just the value element
+# Splitting each element by colon and taking just the value element
 # Stripping each element from unnecessary spaces
 # Appending each line to the new clean data list
 
